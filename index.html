@@ -1,0 +1,86 @@
+<html>
+<head>
+			<title> Profile  App by viraj </title>
+			<style>
+					* { font-size:50px; font-family: Arial;}
+					body { background-color:lightyellow; }
+					h1 {background-color:black; color:white; width:60%; border-radius:40px; text-align:center;}
+					input[type=radio] {width: 1.5%;  height: 0.5em; }
+					input[type=checkbox] {width: 1.5%;  height: 0.5em; }
+			</style>
+			<script>
+					function show()
+					{			
+					event.preventDefault();
+					let name = document.getElementById("id_name");
+					let phone = document.getElementById("id_phone");
+					let msg = document.getElementById("id_msg");
+					let male = document.getElementById("id_male");
+					let female = document.getElementById("id_female");
+					let java = document.getElementById("id_java");
+					let js = document.getElementById("id_js");
+					let python = document.getElementById("id_python");
+
+					if (name.value == "")
+					{
+							alert("name cannot be empty");
+							msg.innerHTML = "";
+							name.focus();
+							return;
+					}
+					if (! name.value.match("[A-Za-z]+"))
+					{
+							alert("name should contain only alphabets");
+							name.value="";
+							msg.innerHTML = "";
+							name.focus();
+							return;
+					}
+
+					if (phone.value.toString().length !=10)
+					{
+							alert(" invalid number ");
+							msg.innerHTML = "";
+							phone.focus();
+							return;
+					}
+
+					let gender="";
+					if(male.checked)			gender="Male";
+					else						gender="Female";
+
+					let languages="";
+					if (java.checked)			languages=languages+ "Java";
+					if (js.checked)				languages=languages+ "Js";
+					if (python.checked)			languages=languages+ "Python";
+
+					let ans="name="+name.value+ "phone= " +phone.value+ "gender=" +gender +"languages" +languages;
+					msg.innerHTML=ans;
+					}
+
+			</script>
+</head>
+<body>
+		<h1> Profile App </h1>
+		<form onsubmit="show()">
+		Name:<input type="text" placeholder="enter ur name" id="id_name"/>
+		<br><br>
+		Phone:<input type="number" placeholder="enter phone" id="id_phone"/>
+		<br><br>
+		Gender:
+		<input type="radio" name="g" id="id_male" checked=true/> Male
+		<input type="radio" name="g" id="id_female"/> Female
+		<br><br>
+		Languages:
+		<input type="checkbox" id="id_java"/>Java
+		<input type="checkbox" id="id_js"/>Javascript
+		<input type="checkbox" id="id_python"/>Python
+		<br><br>
+		<input type="submit"/>
+		</form>
+		<h2 id="id_msg"/>
+</body>
+</html>
+
+ 
+
